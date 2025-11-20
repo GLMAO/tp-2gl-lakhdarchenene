@@ -1,0 +1,33 @@
+TP2 – Design Patterns
+Analyse des principes SOLID
+
+Le code respecte globalement les principes de conception SOLID.
+
+1) Single Responsibility Principle (SRP)
+Chaque classe a une responsabilité précise :
+- Cours : représente un cours
+- CoursBuilder : construit un cours
+- CoursDecorator / CoursEnLigne : ajoutent des fonctionnalités
+- Etudiant / Responsable : reçoivent les notifications
+- GestionnaireEmploiDuTemps : gère et notifie
+
+Cependant, un léger problème peut être discuté :
+La classe GestionnaireEmploiDuTemps gère à la fois :
+- la logique de gestion de l’emploi du temps
+- la logique de notification des observateurs
+
+Selon le principe SRP, ces responsabilités pourraient être séparées
+dans deux classes différentes (par exemple avec une classe NotificationService).
+
+2) Open/Closed Principle (OCP)
+Le code respecte ce principe grâce à l’utilisation du design pattern Decorator :
+On peut ajouter des fonctionnalités (ex : CoursEnLigne) sans modifier la classe Cours.
+
+3) Dependency Inversion Principle (DIP)
+GestionnaireEmploiDuTemps dépend de l’interface Observer et non
+d’implémentations concrètes, ce qui est une bonne pratique.
+
+Conclusion :
+Le seul principe pouvant être considéré comme légèrement violé est le
+Single Responsibility Principle dans la classe GestionnaireEmploiDuTemps.
+Le reste de la conception respecte correctement les principes SOLID.
